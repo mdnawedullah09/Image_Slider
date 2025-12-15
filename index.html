@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Slider using DOM</title>
+
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial;
+    }
+
+    img {
+      width: 300px;
+      height: 200px;
+      border-radius: 10px;
+      transition: 0.5s;
+    }
+
+    button {
+      padding: 8px 15px;
+      margin: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Image Slider using DOM</h2>
+  <img
+    id="slide"
+    src="https://i.ibb.co/XrKrfH18/Dark-Mountains-IPhone-Wallpaper-HD-IPhone.jpg"
+    alt="slider image"
+  >
+
+  <br>
+
+  <button id="prevBtn">Previous</button>
+  <button id="nextBtn">Next</button>
+
+  <script>
+    let slide = document.getElementById("slide");
+    let nextBtn = document.getElementById("nextBtn");
+    let prevBtn = document.getElementById("prevBtn");
+
+    let images = [
+      "https://i.ibb.co/XrKrfH18/Dark-Mountains-IPhone-Wallpaper-HD-IPhone.jpg",
+      "https://i.ibb.co/HD859Gmd/HD-Wallpaper-Dump-all-sorts-in-here.jpg",
+      "https://i.ibb.co/LDbbr9dD/nature-1.jpg"
+    ];
+
+    let index = 0;
+
+    nextBtn.addEventListener("click", function () {
+      index++;
+      if (index == images.length) {
+        index = 0;
+      }
+      slide.src = images[index];
+    });
+
+    prevBtn.addEventListener("click", function () {
+      index--;
+      if (index < 0) {
+        index = images.length - 1;
+      }
+      slide.src = images[index];
+    });
+
+    setInterval(function () {
+      index++;
+      if (index == images.length) {
+        index = 0;
+      }
+      slide.src = images[index];
+    }, 3000);
+  </script>
+
+</body>
+</html>
